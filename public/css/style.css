@@ -1,23 +1,21 @@
 body {
-    /* you can use a more complete font-family from VSCode as well */
+
     font-family: arial;
+    background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/27/9f/45/bc/restaurant.jpg");
+    background-size: cover;
 }
 
 .header {
-    background-color: lightgreen;
     padding: 1em;
-}
-
-.main {
-    background-color : lightseagreen;
 }
 
 .footer {
     background-color: lightgreen;
     padding: 1em;
 }
+
 /*clearing the footer float*/
 .clearfix {
     overflow: auto;
     zoom: 1;
-  }
+}
