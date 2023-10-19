@@ -1,7 +1,7 @@
-INSERT into weekDays (id, week_days) values ('Monday', 1);
-INSERT into weekDays (id, week_days) values ('Tuesday', 2);
-INSERT into weekDays(id, week_days) values ('Wednesday', 3);
-INSERT into weekDays (id, week_days) values ('Thursday', 4);
-INSERT into weekDays (id, week_days) values ('Friday', 5);
-INSERT into weekDays(id, week_days) values ('Saturday', 6);
-INSERT into weekDays(id, week_days) values ('Sunday',7);
+INSERT into weekDays(weekdays_id, week_days) values (1,'Monday');
+INSERT into weekDays(weekdays_id, week_days) values (2,'Tuesday');
+INSERT into weekDays(weekdays_id, week_days) values (3,'Wednesday');
+INSERT into weekDays(weekdays_id, week_days) values (4,'Thursday');
+INSERT into weekDays(weekdays_id, week_days) values (5,'Friday');
+INSERT into weekDays(weekdays_id, week_days) values (6,'Saturday');
+INSERT into weekDays(weekdays_id, week_days) values (7,'Sunday');

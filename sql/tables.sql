@@ -1,16 +1,16 @@
 CREATE TABLE waiters (
-	waiters_id serial not null primary key,
-    username text unique not null,
+	waiters_id SERIAL NOT NULL PRIMARY KEY,
+    username TEXT UNIQUE NOT NULL
 );
 
-create table weekDays (
-	weekdays_id serial not null primary key,
-	week_days int,
+CREATE TABLE weekDays (
+	weekdays_id SERIAL NOT NULL PRIMARY KEY,
+	week_days TEXT UNIQUE NOT NULL
 );
 
-create table admin (
-	waiters_id int,
-    weekdays_id int,
+CREATE TABLE admin (
+	waiters_id INT,
+    weekdays_id INT,
 	foreign key (waiters_id) references waiters(waiters_id) ON DELETE CASCADE,
     foreign key (weekdays_id) references weekDays(weekdays_id) ON DELETE CASCADE
 );
