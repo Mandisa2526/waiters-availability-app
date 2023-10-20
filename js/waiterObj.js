@@ -2,6 +2,7 @@ export default function WaitersAvailabilityFactory() {
     let userInput = "";
     let errorMessage = "";
     let letters = /^[A-Za-z]+$/;
+    let daysSelected = '';
 
     function setError(name) {
         if (!name) {
@@ -19,6 +20,14 @@ export default function WaitersAvailabilityFactory() {
         }
 
     }
+    // function selectDays(){
+    //     if(daysSelected == 'checkbox'){
+    //         await 
+    //     }
+    // }
+    function getDays(){
+        return daysSelected
+    }
     function getError(){
         return errorMessage;
     }
@@ -35,6 +44,8 @@ export default function WaitersAvailabilityFactory() {
         setError,
         getUsername,
         setUserName,
+        //selectDays,
+        getDays
         
     }
 }

@@ -26,36 +26,48 @@
         </div>
         <div class="main clearfix">
             <form action="waiters/{{name}}">
-            <div class="container" style="background-color: white;padding:1em;margin:1em;">
-                <div class="main clearfix">
-                    <div style="padding: 10px;margin:1em">
-                        <p style="font-weight: bold;font-size:medium">Hi {{name}},this is where you are going to select the days you will be working.</p>
-                    </div>
+                <p class="errorM" style="color: red;font-weight:bold;">{{errorMsg}}</p>
+                <div class="container" style="background-color: white;padding:1em;margin:1em;">
+                    <div class="main clearfix">
+                        <div style="padding: 10px;margin:1em">
+                            <p style="font-weight: bold;font-size:medium">Hi {{name}},this is where you are going to
+                                select the days you will be working.</p>
+                        </div>
 
-                    <!--check box for each week day-->
-                  <form >
-                    <input type="checkbox" id="moonday" name="moonday" value="monday">
-                    <label for="day1">Monday</label><br>
-                    <input type="checkbox" id="toosday" name="toosday" value="tuesday">
-                    <label for="day2">Tuesday</label><br>
-                    <input type="checkbox" id="wens" name="wens" value="wednesday">
-                    <label for="day3">Wednesday</label><br>
-                    <input type="checkbox" id="thus" name="thus" value="thursday">
-                    <label for="day4">Thursday</label><br>
-                    <input type="checkbox" id="fri" name="fri" value="friday">
-                    <label for="day5">Friday</label><br>
-                    <input type="checkbox" id="sat" name="sat" value="saturday">
-                    <label for="day6">Saturday</label><br>
-                    <input type="checkbox" id="sunny" name="sunny" value="sunday">
-                    <label for="day7">Sunday</label><br>
-                    <div class=" btns text-center" style="display:flex">
-                        <button class="btn btn-dark"><a href="/">submit</a></button>
-                        <button class="btn btn-dark"><a href="/">Back</a></button>
+                        <!--check box for each week day-->
+                        <form action="/waiter" method="POST">
+                            <input type="checkbox"  name="moonday" value="Monday">
+                            <label for="day1">Monday</label><br>
+                            <input type="checkbox"  name="toosday" value="Tuesday">
+                            <label for="day2">Tuesday</label><br>
+                            <input type="checkbox"  name="wens" value="Wednesday">
+                            <label for="day3">Wednesday</label><br>
+                            <input type="checkbox" name="thus" value="Thursday">
+                            <label for="day4">Thursday</label><br>
+                            <input type="checkbox" name="fri" value="Friday">
+                            <label for="day5">Friday</label><br>
+                            <input type="checkbox" name="sat" value="Saturday">
+                            <label for="day6">Saturday</label><br>
+                            <input type="checkbox" name="sunny" value="Sunday">
+                            <label for="day7">Sunday</label><br>
+                            <div class=" btns text-center" style="display:flex">
+                                <button class="btn btn-dark" style="padding: 1em;"><a href="/waiters/:username">submit</a></button>
+                                <button class="btn btn-dark"><a href="/">Back</a></button>
+                            </div>
+                        </form>
                     </div>
-                  </form>
                 </div>
-            </div>
             </form>
+            <script>
+
+                let error = document.querySelector(".errorM");
+
+                setTimeout(function () {
+                    error.innerHTML = "";
+
+                }, 3000);
+
+            </script>
             <div class="footer">
 
             </div>

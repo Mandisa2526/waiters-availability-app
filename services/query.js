@@ -1,18 +1,17 @@
-export default function Query(db){
-async function insertUserName(name){
-   // let days = await getDaysId();
-   //${days.weekdays_id}
-    await db.none(`INSERT INTO waiters(username) VALUES (1,'${name}`);
-}
-
-// function getDaysId(name) {        
-//     let DaysCode = name.substring(0,2);
-//     return db.oneOrNone(`SELECT weekdays_id FROM weekDays WHERE week_days = '${DaysCode}'`);
-// }
+export default function Query(db) {
     
-    
+    async function insertUserName(name) {
+        
+        await db.none(`insert into waiter(username) values(${name});`);
+    }
+    async function insertDay() {
+        await db.none(`insert into waiter_week_day(waiter_id, week_day_id) values(1, 1)`);
+    }
 
-    return{
-       insertUserName, 
+
+    return {
+        insertUserName,
+        insertDay
+        
     }
 }

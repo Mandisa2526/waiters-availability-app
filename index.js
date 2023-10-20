@@ -62,26 +62,41 @@ app.use(express.static('public'));
 
 // Routes
 app.get('/waiters/:username', async function (req, res) {
-  let addDays = req.params.name
-  let result = await database.insertUserName(addDays);
+  //Show waiters a screen where they can select the days they can work
+  let addName = req.params.name
+  let result = await database.insertUserName(addName);
+
   
   res.render('selectDays', {
     result,
-    addDays
+    addDays,
   });
   
 });
-app.post('/waiters', async function (req, res) {
+// app.post('/waiters/:username', async function (req, res) {
+//   //Send the days the waiter can work to the server.
+//   let checkBtn = req.body.checkbox;
 
+//    waiterObject.setUserName(checkBtn);
+
+//    if (await database.insertUserName) {
+//       await database.insertdays(checkBtn);
+//     }
+    
+//   res.render('selectDays', {
+          
+//   });
+ 
+app.get('/days', async function (req, res) {
+  //Show your sister which days waiters are available
+
+  
+});
+app.post('/waiters', async function (req, res) {
+  
   res.render('selectDays', {
-    name: req.body.name
+    name: req.body.name,
   })
-  // waiterObject.setError(nameInput);
-  // waiterObject.setUserName(nameInput);
-  // if (waiterObject.getError() === undefined) {
-  //   await database.insertUserName(nameInput);
-  // }
-  // res.redirect('/waiters/:username');
   
 });
 app.get('/',waiterApp.pageLoad);
