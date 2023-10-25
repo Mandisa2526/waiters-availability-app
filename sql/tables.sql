@@ -12,5 +12,5 @@ CREATE TABLE waiter_week_day (
 	waiter_id INT,
     week_day_id INT,
 	foreign key (waiter_id) references waiter(id) ON DELETE CASCADE,
-    foreign key (week_day_id) references week_day(id) ON DELETE CASCADE
+    foreign key (week_day_id) references week_day(id) ON DELETE CASCADE,
 );

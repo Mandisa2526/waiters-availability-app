@@ -2,27 +2,21 @@
 import express from 'express';
 
 //Setup handlebars
-import exphbs  from 'express-handlebars';
+import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
 import flash from 'express-flash';
 import session from 'express-session';
-import pgPromise from 'pg-promise';
 
 
 // Import modules
-import waiterAvailabilityApp from './routes/water_appRoutes.js';
-import WaitersAvailabilityFactory from './js/waiterObj.js';
+import WaiterAvailabilityAppRoutes from './routes/waiter-routes.js';
+import WaitersAvailabilityFactory from './js/waiter-object.js';
 import Query from './services/query.js';
+import db from './routes/database-connect.js';
 
-const pgp = pgPromise();
-const connectionString = "postgres://rgyjyktk:3gSnt5rJoAo9ktvrpqMENiDvZhGkY1NN@mahmud.db.elephantsql.com/rgyjyktk?ssl=true";
-const db = pgp(connectionString);
-
-
-let database = Query(db);
-let waiterObject = WaitersAvailabilityFactory(database);
-let waiterApp = waiterAvailabilityApp(waiterObject,database);
-
+let query = Query(db);
+let waiterObject = WaitersAvailabilityFactory(query);
+let waiterApp  = WaiterAvailabilityAppRoutes(waiterObject);
 
 // Setup a simple ExpressJS server
 const app = express();
@@ -40,7 +34,7 @@ app.engine('handlebars', handlebarSetup);
 app.set('view engine', 'handlebars');
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
@@ -49,7 +43,7 @@ app.set('view engine', 'handlebars');
 
 // initialise session middleware - flash-express depends on it
 app.use(session({
-  secret : "<add a secret string here>",
+  secret: "<add a secret string here>",
   resave: false,
   saveUninitialized: true
 }));
@@ -61,50 +55,25 @@ app.use(flash());
 app.use(express.static('public'));
 
 // Routes
-app.get('/waiters/:username', async function (req, res) {
-  //Show waiters a screen where they can select the days they can work
-  let addName = req.params.name
-  let result = await database.insertUserName(addName);
+app.get('/waiters/:username', waiterApp.saveUser);
 
-  
-  res.render('selectDays', {
-    result,
-    addDays,
-  });
-  
-});
-// app.post('/waiters/:username', async function (req, res) {
-//   //Send the days the waiter can work to the server.
-//   let checkBtn = req.body.checkbox;
+app.post('/waiters/:username', waiterApp.saveDays);
 
-//    waiterObject.setUserName(checkBtn);
-
-//    if (await database.insertUserName) {
-//       await database.insertdays(checkBtn);
-//     }
-    
-//   res.render('selectDays', {
-          
-//   });
- 
 app.get('/days', async function (req, res) {
   //Show your sister which days waiters are available
 
-  
+  res.render('waitersAvail', {
+    // variables to be passed to handlebars
+  });
+
 });
-app.post('/waiters', async function (req, res) {
-  
-  res.render('selectDays', {
-    name: req.body.name,
-  })
-  
-});
-app.get('/',waiterApp.pageLoad);
-app.post('/',waiterApp.add); 
+
+app.get('/', waiterApp.pageLoad);
+app.post('/', waiterApp.add);
 // Set PORT variable
 let PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function () {
-    console.log('App starting on port', PORT);
+  console.log('App starting on port', PORT);
 });
 

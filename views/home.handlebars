@@ -15,54 +15,35 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <!---->
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-K2WVJ25C');</script>
-    <!-- End Google Tag Manager -->
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2WVJ25C" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <div class="container">
         <div class="header text-center">
             <div class="eight">
                 <h1>The montange</h1>
             </div>
             <img src="https://t4.ftcdn.net/jpg/02/75/70/03/360_F_275700347_09reCCwb7JBxTKiYQXsyri4riMKaHbj8.jpg"
-                width="100px" height="100px">
+            width="100px" height="100px">
         </div>
         <div class="main clearfix">
             <div class="content">
-                <form action="/" method="post">
                     <div class="instruction item text-center">
                         <p class="para1">Hi Waiters,Welcome to The montage workschedule</p>
                         <p class="para2"> You are about to update your work schedule for the week.Please enter Your
-                            Username(e.g Lungelo Xaba) in the text box below and press submit
-                            <hr>You can also copy and paste the following in the url and insert your username:
-                            waiter/[name]
+                            Username(e.g Lungelo Xaba) in the text box below and press submit to proceed on the next screen.
                         </p>
                     </div>
-                </form>
                 <!--Show waiters a screen where they can select the days they can work-->
-                <form action="/waiters" method="POST">
-
                     <div class="inputting item">
                         <input type="text" name="name" placeholder="Your name.. ">
-                        <input type="submit" value="Submit" class="btn-default btn btn-primary">
+                        <input type="button" onclick="onSubmit()" value="Submit" class="btn-default btn btn-primary">
                     </div>
-                </form>
-
-
+                <script>
+                    function onSubmit() {
+                        window.location = "/waiters/" + document.getElementsByName("name")[0].value;
+                    }
+                </script>
             </div>
         </div>
         <div class="footer">
