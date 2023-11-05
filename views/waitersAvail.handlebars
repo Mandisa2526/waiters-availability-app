@@ -12,18 +12,19 @@
         <tr>
             <th>Monday</th>
             <th>Tuesday</th>
-            <th>Country</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
         </tr>
+        {{#each actions}}
         <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
+            <td>{{type}}</td>
+            <td>{{cost}}</td>
+            <td>{{timestamp}}</td>
         </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
+        {{/each}}
     </table>
 
 </body>

@@ -24,21 +24,65 @@
                 <h1>The montange</h1>
             </div>
             <img src="https://t4.ftcdn.net/jpg/02/75/70/03/360_F_275700347_09reCCwb7JBxTKiYQXsyri4riMKaHbj8.jpg"
-            width="100px" height="100px">
+                width="100px" height="100px">
         </div>
         <div class="main clearfix">
             <div class="content">
+                <div class="admnwaiters">
                     <div class="instruction item text-center">
                         <p class="para1">Hi Waiters,Welcome to The montage workschedule</p>
                         <p class="para2"> You are about to update your work schedule for the week.Please enter Your
-                            Username(e.g Lungelo Xaba) in the text box below and press submit to proceed on the next screen.
+                            Username(e.g Lungelo Xaba) in the text box below and press submit to proceed on the next
+                            screen.
                         </p>
                     </div>
-                <!--Show waiters a screen where they can select the days they can work-->
+                    <!--Show waiters a screen where they can select the days they can work-->
                     <div class="inputting item">
                         <input type="text" name="name" placeholder="Your name.. ">
                         <input type="button" onclick="onSubmit()" value="Submit" class="btn-default btn btn-primary">
                     </div>
+                    <div class="admin">
+                        <h2>Admin Login</h2>
+
+                        <button onclick="document.getElementById('id01').style.display='block'"
+                            style="width:auto;">Login</button>
+                        <div id="id01" class="modal">
+
+                            <form class="modal-content animate" action="/action_page.php" method="post">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                        title="Close Modal">&times;</span>
+                                    <img src="https://t4.ftcdn.net/jpg/04/75/00/99/360_F_475009987_zwsk4c77x3cTpcI3W1C1LU4pOSyPKaqi.jpg" alt="Avatar" class="avatar" width="40px" height="200px">
+                                </div>
+
+                                <div class="container">
+                                    <label for="uname"><b>Username</b></label>
+                                    <input type="text" placeholder="Enter Username" name="uname" required>
+
+                                    <label for="psw"><b>Password</b></label>
+                                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                                    <button type="submit">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <script>
+                            // Get the modal
+                            var modal = document.getElementById('id01');
+
+                            // When the user clicks anywhere outside of the modal, close it
+                            window.onclick = function (event) {
+                                if (event.target == modal) {
+                                    modal.style.display = "none";
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
                 <script>
                     function onSubmit() {
                         window.location = "/waiters/" + document.getElementsByName("name")[0].value;
