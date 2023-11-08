@@ -2,13 +2,16 @@
 export default function WaitersAvailabilityFactor(query) {
     let userInput = "";
     let errorMessage = "";
-    //let letters = /^[A-Za-z]+$/;
+    
 
+    function adminLogIn(uname,psw){
+        return (uname === "uname_admin" && psw === "pswd28") 
+    }   
 
     async function addUser(name) {
         if (!name) {
             errorMessage = "Please check the instructions above!";
-        }else {
+        } else {
             errorMessage = undefined;
         }
         if (!errorMessage) {
@@ -19,12 +22,24 @@ export default function WaitersAvailabilityFactor(query) {
     async function saveDays(name, days) {
         query.saveDays(name, days)
     }
+    async function getDaysAndUser() {
+        let days = await query.selectDaysAndUser();
+        let results  = {        };
+        days.forEach(element => {
+            if (!results[element.username]) {
+                results[element.username] = {};
+            }
+            results[element.username][element.week_day] = true;
+        });
+        console.log(results);
+        return results;
+    }
 
-    function getUser(){
+    function getUser() {
         return userInput
     }
-   
-    function getError(){
+
+    function getError() {
         return errorMessage;
     }
 
@@ -32,7 +47,9 @@ export default function WaitersAvailabilityFactor(query) {
         getError,
         addUser,
         getUser,
-        saveDays
-        
+        saveDays,
+        adminLogIn,
+        getDaysAndUser
+
     }
 }

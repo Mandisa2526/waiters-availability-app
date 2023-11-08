@@ -5,11 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #2e3332;
+  color: rgb(255, 255, 255);
+}
+
+table,td {
+  border:1px solid  #ddd;
+}
+    </style>
 </head>
 
+
 <body>
+    <h1>Waiters Availability</h1>
+    <p class="succes">{{messages.success}}</p>
     <table>
-        <tr>
+       <tr id="customers">
             <th>Monday</th>
             <th>Tuesday</th>
             <th>Wednesday</th>
@@ -18,15 +35,32 @@
             <th>Saturday</th>
             <th>Sunday</th>
         </tr>
-        {{#each actions}}
-        <tr>
-            <td>{{type}}</td>
-            <td>{{cost}}</td>
-            <td>{{timestamp}}</td>
-        </tr>
-        {{/each}}
-    </table>
 
+        {{#each days}}
+        <tr>
+            <td>{{#if Monday}}{{@key}}{{/if}}</td>
+            <td>{{#if Tuesday}}{{@key}}{{/if}}</td>
+            <td>{{#if Wednesday}}{{@key}}{{/if}}</td>
+            <td>{{#if Thursday}}{{@key}}{{/if}}</td>
+            <td>{{#if Friday}}{{@key}}{{/if}}</td>
+            <td>{{#if Saturday}}{{@key}}{{/if}}</td>
+            <td>{{#if Sunday}}{{@key}}{{/if}}</td>
+            </tr>
+
+        {{/each}}
+
+    </table>
+    <script>
+
+        let succsessMessage = document.querySelector(".succes");
+
+        setTimeout(function () {
+
+            succsessMessage.innerHTML = "";
+
+        }, 3000);
+
+    </script>
 </body>
 
 </html>

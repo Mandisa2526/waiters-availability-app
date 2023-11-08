@@ -5,9 +5,8 @@ export default function Query(db) {
         await db.none(`insert into waiter(username) values('${name}');`);
     }
     //Join tables
-    async function SaveDaysAndUser() {
-       await db.many('SELECT week_day.week_day,waiter.username FROM waiter INNER JOIN waiter_week_day ON waiter_week_day.waiter_id = id INNER JOIN week_day ON week_day.id = waiter_week_day.week_day_id;') 
-
+    function selectDaysAndUser() {
+      return db.many('SELECT week_day.week_day,waiter.username FROM waiter INNER JOIN waiter_week_day ON waiter_week_day.waiter_id = id INNER JOIN week_day ON week_day.id = waiter_week_day.week_day_id;') 
     }
 
     async function saveDays(name, days) {
@@ -30,7 +29,7 @@ export default function Query(db) {
     return {
         addWaiter,
         saveDays,
-        SaveDaysAndUser
+        selectDaysAndUser
 
     }
 }

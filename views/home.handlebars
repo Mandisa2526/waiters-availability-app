@@ -15,6 +15,7 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <!---->
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -38,50 +39,67 @@
                     </div>
                     <!--Show waiters a screen where they can select the days they can work-->
                     <div class="inputting item">
+                        
+                          
+                        <div class="error">{{messages.errorM}}</div>
+                            
                         <input type="text" name="name" placeholder="Your name.. ">
                         <input type="button" onclick="onSubmit()" value="Submit" class="btn-default btn btn-primary">
                     </div>
-                    <div class="admin">
-                        <h2>Admin Login</h2>
-
-                        <button onclick="document.getElementById('id01').style.display='block'"
-                            style="width:auto;">Login</button>
-                        <div id="id01" class="modal">
-
-                            <form class="modal-content animate" action="/action_page.php" method="post">
-                                <div class="imgcontainer">
-                                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                                        title="Close Modal">&times;</span>
-                                    <img src="https://t4.ftcdn.net/jpg/04/75/00/99/360_F_475009987_zwsk4c77x3cTpcI3W1C1LU4pOSyPKaqi.jpg" alt="Avatar" class="avatar" width="40px" height="200px">
-                                </div>
-
-                                <div class="container">
-                                    <label for="uname"><b>Username</b></label>
-                                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                                    <label for="psw"><b>Password</b></label>
-                                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                                    <button type="submit">Login</button>
-                                    <label>
-                                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                                    </label>
-                                </div>
-                            </form>
+                </div>
+                <div class="admin">
+                    <div class=" admnwaiters">
+                        <h2 class="text-center">Admin Login</h2>
+                        <div class="msg-holder">
+                            <p class="login-error-msg error">{{messages.error}}</p>
                         </div>
-
-                        <script>
-                            // Get the modal
-                            var modal = document.getElementById('id01');
-
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function (event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
-                        </script>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"
+                            class="btn-default btn btn-primary">Login</button>
                     </div>
+                    <div id="id01" class="modal">
+
+                        <form class="modal-content animate" action="/days" method="post">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                    title="Close Modal">&times;</span>
+                                <img src="https://t4.ftcdn.net/jpg/04/75/00/99/360_F_475009987_zwsk4c77x3cTpcI3W1C1LU4pOSyPKaqi.jpg"
+                                    alt="Avatar" class="avatar" width="40px" height="200px">
+                            </div>
+
+                            <div class="containers">
+                                <label for="uname"><b>Username</b></label>
+                                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                                <button type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <script>
+                        // Get the modal
+                        var modal = document.getElementById('id01');
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
+                    <script>
+
+                        let error = document.querySelector(".error");
+
+                        setTimeout(function () {
+
+                            error.innerHTML = "";
+
+                        }, 3000);
+
+                    </script>
                 </div>
                 <script>
                     function onSubmit() {

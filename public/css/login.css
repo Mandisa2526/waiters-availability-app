@@ -61,7 +61,7 @@ h1{
     margin:1em;
     height: 100px;
 }
-.instruction{
+.admnwaiters{
     background-color:#fff;
     padding: 1em;
     margin: 1em;
@@ -80,7 +80,8 @@ h1{
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 .content{
-    margin: 1em;
+    flex: 1 100%;
+    display: flex;
 }   
 .item {
     flex-grow: 1;
@@ -95,8 +96,7 @@ h1{
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
+    margin: 8px 0; 
     border: 1px solid #ccc;
     box-sizing: border-box;
   }
@@ -129,7 +129,7 @@ input[type=text], input[type=password] {
     border-radius: 50%;
   }
   
-  .container {
+  .containers {
     padding: 16px;
   }
   
@@ -203,3 +203,41 @@ input[type=text], input[type=password] {
        width: 100%;
     }
   }
+
+  .login-error-msg-holder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+  
+  .login-error-msg {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8a0000;
+    border: 1px solid #8a0000;
+    background-color: #e58f8f;
+    opacity: 0;
+  }
+  .success{
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #347b18;
+    border: 1px solid #306e51;
+    background-color: #b8f4c2;
+    opacity: 0;
+  }
+  
+  #error-msg-second-line {
+    display: block;
+  }
+  
