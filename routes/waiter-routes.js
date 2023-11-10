@@ -49,10 +49,6 @@ export default function WaiterAvailabilityAppRoutes(waiterObject){
     //posts
     async function saveDays(req, res) {
         await waiterObject.saveDays(req.params.username, req.body.days);
-        if(waiterObject.addUser(req.params.username) == ''){
-            req.flash('Please check the instructions above!')
-            res.redirect('/')
-        }
         res.render('selectDays', {
             name: req.params.username,
         });
