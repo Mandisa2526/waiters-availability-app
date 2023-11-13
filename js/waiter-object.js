@@ -7,13 +7,7 @@ export default function WaitersAvailabilityFactor(query) {
     function adminLogIn(uname,psw){
         return (uname === "uname_admin" && psw === "pswd28") 
     }   
-
     async function addUser(name) {
-        if (!name) {
-            errorMessage = "Please check the instructions above!";
-        } else {
-            errorMessage = undefined;
-        }
         if (!errorMessage) {
             errorMessage = await query.addWaiter(name);
         }
@@ -21,6 +15,12 @@ export default function WaitersAvailabilityFactor(query) {
 
     async function saveDays(name, days) {
         query.saveDays(name, days)
+    }
+    async function getWeekDays(weekDays){
+        let days = weekDays.map(weekDay => `'${weekDay}'`)
+        .reduce((weekDay1, weekDay2) => `${weekDay1},  ${weekDay2}`)
+        
+        return days
     }
     async function getDaysAndUser() {
         let days = await query.selectDaysAndUser();
@@ -43,13 +43,14 @@ export default function WaitersAvailabilityFactor(query) {
         return errorMessage;
     }
 
-    return {
+    return {    
         getError,
         addUser,
         getUser,
         saveDays,
         adminLogIn,
-        getDaysAndUser
+        getDaysAndUser,
+        getWeekDays
 
     }
 }

@@ -1,3 +1,5 @@
+import { query } from "express";
+
 export default function WaiterAvailabilityAppRoutes(waiterObject){
    //get route
     async function pageLoad(req, res) {
@@ -48,7 +50,13 @@ export default function WaiterAvailabilityAppRoutes(waiterObject){
     }
     //posts
     async function saveDays(req, res) {
-        await waiterObject.saveDays(req.params.username, req.body.days);
+       // await waiterObject.saveDays(req.params.username, req.body.days);
+        let daysResult =  await waiterObject.saveDays(req.params.username, req.body.days);
+        //if 
+        if(daysResult <= 1 ){
+            req.flash('error','Please submit more than one days')
+        }
+        console.log(daysResult)
         res.render('selectDays', {
             name: req.params.username,
         });

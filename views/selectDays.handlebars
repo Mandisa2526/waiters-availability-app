@@ -19,16 +19,16 @@
 
 </head>
 
-<body>
+<body style=" background-image: url('https://eu-assets.simpleview-europe.com/englishriviera2017/imageresizer/?image=%2Fdbimgs%2FER%20Gal-Torquay%206-Bistrot%20Pierre%20Restaurants.jpg&action=FeaturedItemsScroll20193x2')">
     <div class="container">
-        <div class="header text-center" img="/images/restaurant.jpg">
+        <div class="header text-center" style="background-color:#13505B;">
             <h1>Waiters Availability Form</h1>
         </div>
         <div class="main clearfix">
             <form action="/waiters/{{name}}" method="post">
-                <div class="container" style="background-color: white;padding:1em;margin:1em;">
+                <div class="container" style="background-color:#f8f8f8;padding:1em;margin:1em;">
                     <div class="main clearfix">
-                        <p>errorM</p>
+                        <p>{{messages.error}}</p>
                         <div style="padding: 10px;margin:1em">
                             <h2 style="font-weight: bold;font-size:medium" class="text-center">Hi {{name}},this is where you are going to
                                 select the days you will be working.</h2>

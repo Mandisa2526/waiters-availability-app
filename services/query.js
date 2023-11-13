@@ -1,5 +1,6 @@
+//import WaitersAvailabilityFactor from "waiter-object.js";
 export default function Query(db) {
-
+     
     async function addWaiter(name) {
         console.log("insert user", name)
         await db.none(`insert into waiter(username) values('${name}');`);
@@ -22,7 +23,7 @@ export default function Query(db) {
     }
     function getWeekDayId(weekDays) {
         let days = weekDays.map(weekDay => `'${weekDay}'`)
-            .reduce((weekDay1, weekDay2) => `${weekDay1},  ${weekDay2}`)
+        .reduce((weekDay1, weekDay2) => `${weekDay1},  ${weekDay2}`)
         return db.many(`SELECT id FROM week_day WHERE week_day IN (${days}) `);
     }
 

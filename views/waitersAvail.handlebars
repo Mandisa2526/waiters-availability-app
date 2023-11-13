@@ -5,51 +5,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/days.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <!--bootrap4-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!--bootsrap3-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/greet.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <style>
-        
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #2e3332;
-  color: rgb(255, 255, 255);
-}
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
 
-table,td {
-  border:1px solid  #ddd;
-}
+        }
+
+        table {
+            margin: 0 auto;
+        }
+
+        /* Default Table Style */
+        table {
+            color: #333;
+            background: white;
+            border: 1px solid grey;
+            font-size: 12pt;
+            border-collapse: collapse;
+        }
+
+        table thead th,
+        table tfoot th {
+            color: #777;
+            background: rgba(0, 0, 0, .1);
+        }
+
+        table caption {
+            padding: .5em;
+        }
+
+        table th,
+        table td {
+            padding: .5em;
+            border: 1px solid lightgrey;
+        }
+
+        table {
+            border: 1px solid #ddd;
+        }
+
+        .div1 {
+            width: 50px;
+            height: 10px;
+            border: 1px solid green;
+            background-color: green;
+
+        }
+
+        .div2 {
+            width: 50px;
+            height: 10px;
+            border: 1px solid red;
+            background-color: red;
+        }
+
+        .div3 {
+            width: 50px;
+            height: 10px;
+
+            border: 1px solid orange;
+            background-color: orange;
+        }
     </style>
 </head>
 
 
-<body>
-    <h1>Waiters Availability</h1>
-    <p class="succes">{{messages.success}}</p>
-    <table>
-       <tr id="customers">
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-        </tr>
+<body style=" background-image: url('https://eu-assets.simpleview-europe.com/englishriviera2017/imageresizer/?image=%2Fdbimgs%2FER%20Gal-Torquay%206-Bistrot%20Pierre%20Restaurants.jpg&action=FeaturedItemsScroll20193x2')"> 
+    <div class="header text-center" style="background-color:#13505B;">
+        <h1>Waiters Availability</h1>
+    </div>
 
-        {{#each days}}
-        <tr>
-            <td>{{#if Monday}}{{@key}}{{/if}}</td>
-            <td>{{#if Tuesday}}{{@key}}{{/if}}</td>
-            <td>{{#if Wednesday}}{{@key}}{{/if}}</td>
-            <td>{{#if Thursday}}{{@key}}{{/if}}</td>
-            <td>{{#if Friday}}{{@key}}{{/if}}</td>
-            <td>{{#if Saturday}}{{@key}}{{/if}}</td>
-            <td>{{#if Sunday}}{{@key}}{{/if}}</td>
-            </tr>
+    <div class="main clearfix">
+        
+        <div class="content" style="padding: 1em;margin:1em; background-color:#f8f8f8">
+            <p class="succes text-centere">{{messages.success}}</p>
+        <p style="float: right;">
+           <div class="div1"></div>
+            <label for="html">Enough Waiters</label><br>
 
-        {{/each}}
+            <div class="div2"></div>
+            <label>Over Subscribed waiters</label><br>
 
-    </table>
+            <div class="div3"></div>
+            <label>waiters still needed</label>
+        </p>
+
+            <table class="text-centere">
+                <tr id="customers">
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+
+                {{#each days}}
+                <tr>
+                    <td>{{#if Monday}}{{@key}}{{/if}}</td>
+                    <td>{{#if Tuesday}}{{@key}}{{/if}}</td>
+                    <td>{{#if Wednesday}}{{@key}}{{/if}}</td>
+                    <td>{{#if Thursday}}{{@key}}{{/if}}</td>
+                    <td>{{#if Friday}}{{@key}}{{/if}}</td>
+                    <td>{{#if Saturday}}{{@key}}{{/if}}</td>
+                    <td>{{#if Sunday}}{{@key}}{{/if}}</td>
+                </tr>
+
+                {{/each}}
+
+            </table>
+        </div>
+    </div>
     <script>
 
         let succsessMessage = document.querySelector(".succes");
