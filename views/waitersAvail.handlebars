@@ -108,7 +108,7 @@
 
         <div class="content" style="padding: 1em;margin:1em; background-color:#f8f8f8">
             {{#if messages.success}}
-                 <div class="message success text-centere">{{messages.success}}</div>
+            <div class="message success text-centere">{{messages.success}}</div>
             {{/if}}
             <p style="float: right;">
             <div class="div1"></div>
@@ -121,7 +121,7 @@
             <label>waiters still needed</label>
             </p>
 
-            <table class="text-centere">
+            <table class="table text-centere">
                 <tr id="customers">
                     <th>Monday</th>
                     <th>Tuesday</th>
@@ -147,9 +147,8 @@
 
             </table>
             <form action="/reset" method="post">
-
-                    <a class="btn-default btn btn-primary magenta text-centere" href="/reset" name="button"
-                        onclick="resetBtn()">Reset</a>
+                <a class="btn-default btn btn-primary magenta" href="/reset" name="button"
+                    onclick="resetBtn()">Reset</a>
 
             </form>
         </div>

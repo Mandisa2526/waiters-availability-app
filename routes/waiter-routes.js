@@ -8,9 +8,22 @@ export default function WaiterAvailabilityAppRoutes(waiterObject) {
     };
     async function getDays(req, res) {
         //Show your sister which days waiters are available
-        let day = await query.selectDaysAndUser();
-        console.log(day);
+        let day = await waiterObject.selectDaysAndUser();
 
+        for(const weekDay in day){
+            
+            const {count} = day[weekDay];
+
+            if(count < 3){
+                day[weekDay].status = "orange";
+            } else if (count === 3){
+                day[weekDay].status = "green";          
+            } else if (count > 3){
+                day[weekDay].status = "red";
+            }   
+        }
+
+        console.log(day);
         res.render('waitersAvail', {
             // variables to be passed to handlebars
             days: day,
@@ -76,13 +89,8 @@ export default function WaiterAvailabilityAppRoutes(waiterObject) {
     }
     //reset
      async function reset(req, res) {
-       let waiters = waiterObject.reset();
-       let allwaitersClear = waiterObject.deleteAllWaiters();
-        res.render('waitersAvail',{
-            waiters,
-            allwaitersClear
-
-        })
+        await waiterObject.deleteAllWaiters();
+        res.redirect('/days')
     };
 
     return {

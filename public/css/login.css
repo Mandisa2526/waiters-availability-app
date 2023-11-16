@@ -230,4 +230,15 @@ input[type=text], input[type=password] {
   #error-msg-second-line {
     display: block;
   }
+
+  /*table background color*/
+  .green{
+    background-color: green;
+  }
+  .red{
+    background-color: red;
+  }
+  .orange{
+    background-color: orange;
+  }
   

@@ -17,11 +17,14 @@ export default function WaitersAvailabilityFactor(query) {
         query.saveDays(name, days)
     }
     async function deleteAllWaiters(){
-        query.deleteAllWaiters;
+        query.deleteAllWaiters();
+    }
+    async function selectDaysAndUser(){
+        query.selectDaysAndUser();
     }
     async function getDaysAndUser() {
         let days = await query.selectDaysAndUser();
-        let results  = {        };
+        let results = { };
         days.forEach(element => {
             if (!results[element.username]) {
                 results[element.username] = {};
@@ -44,7 +47,7 @@ export default function WaitersAvailabilityFactor(query) {
         errorMessage;
     }
 
-    return {  
+    return {
         reset,  
         getError,
         addUser,
@@ -52,7 +55,8 @@ export default function WaitersAvailabilityFactor(query) {
         saveDays,
         adminLogIn,
         getDaysAndUser,
-        deleteAllWaiters
+        deleteAllWaiters,
+        selectDaysAndUser
 
     }
 }

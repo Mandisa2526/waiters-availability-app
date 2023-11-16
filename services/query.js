@@ -7,7 +7,7 @@ export default function Query(db) {
     }
     //Join tables
     function selectDaysAndUser() {
-      return db.many('SELECT week_day.week_day,waiter.username FROM waiter INNER JOIN waiter_week_day ON waiter_week_day.waiter_id = id INNER JOIN week_day ON week_day.id = waiter_week_day.week_day_id;') 
+      return db.any('SELECT week_day.week_day,waiter.username FROM waiter INNER JOIN waiter_week_day ON waiter_week_day.waiter_id = id INNER JOIN week_day ON week_day.id = waiter_week_day.week_day_id;') 
     } 
 
     async function saveDays(name, days) {
@@ -29,9 +29,9 @@ export default function Query(db) {
         return db.many(`SELECT id FROM week_day WHERE week_day IN (${days}) `);
     }
     async function deleteAllWaiters(){
-        
+        await db.none('DELETE FROM waiter_week_day where 1=1');
         await db.none('DELETE FROM waiter where 1=1');
- 
+
     }
 
     return {
