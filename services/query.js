@@ -8,7 +8,7 @@ export default function Query(db) {
     //Join tables
     function selectDaysAndUser() {
       return db.many('SELECT week_day.week_day,waiter.username FROM waiter INNER JOIN waiter_week_day ON waiter_week_day.waiter_id = id INNER JOIN week_day ON week_day.id = waiter_week_day.week_day_id;') 
-    }
+    } 
 
     async function saveDays(name, days) {
         console.log("saveDays", name, days)
@@ -19,9 +19,11 @@ export default function Query(db) {
     }
 
     function getWaitersId(username) {
-        return db.one(`SELECT id FROM waiter WHERE username = '${username}'`);
+        return db.oneOrNone(`SELECT id FROM waiter WHERE username = '${username}'`);
     }
+
     function getWeekDayId(weekDays) {
+        console.log("getWeekDayId", weekDays);
         let days = weekDays.map(weekDay => `'${weekDay}'`)
         .reduce((weekDay1, weekDay2) => `${weekDay1},  ${weekDay2}`)
         return db.many(`SELECT id FROM week_day WHERE week_day IN (${days}) `);
@@ -30,7 +32,9 @@ export default function Query(db) {
     return {
         addWaiter,
         saveDays,
-        selectDaysAndUser
+        selectDaysAndUser,
+        getWaitersId,
+        getWeekDayId
 
     }
 }

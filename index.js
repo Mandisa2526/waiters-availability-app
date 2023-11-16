@@ -56,9 +56,11 @@ app.use(express.static('public'));
 
 // Routes
 app.get('/waiters/:username', waiterApp.saveUser);
+
 app.post('/waiters/:username', waiterApp.saveDays);
 
 app.get('/days',waiterApp.getDays);
+
 app.post('/days',waiterApp.showD);
 
 app.get('/', waiterApp.pageLoad);

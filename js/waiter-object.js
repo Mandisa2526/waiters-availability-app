@@ -12,15 +12,9 @@ export default function WaitersAvailabilityFactor(query) {
             errorMessage = await query.addWaiter(name);
         }
     }
-
+ 
     async function saveDays(name, days) {
         query.saveDays(name, days)
-    }
-    async function getWeekDays(weekDays){
-        let days = weekDays.map(weekDay => `'${weekDay}'`)
-        .reduce((weekDay1, weekDay2) => `${weekDay1},  ${weekDay2}`)
-        
-        return days
     }
     async function getDaysAndUser() {
         let days = await query.selectDaysAndUser();
@@ -35,8 +29,8 @@ export default function WaitersAvailabilityFactor(query) {
         return results;
     }
 
-    function getUser() {
-        return userInput
+    function getUser(username) {
+        return query.getWaitersId(username);
     }
 
     function getError() {
@@ -50,7 +44,6 @@ export default function WaitersAvailabilityFactor(query) {
         saveDays,
         adminLogIn,
         getDaysAndUser,
-        getWeekDays
 
     }
 }

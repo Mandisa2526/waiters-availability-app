@@ -204,39 +204,29 @@ input[type=text], input[type=password] {
     }
   }
 
-  .login-error-msg-holder {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  .login-error-msg {
-    width: 23%;
-    text-align: center;
-    margin: 0;
-    padding: 5px;
-    font-size: 12px;
+ 
+  /*success and error styling*/
+  .erroMsg {
+    color: #cc0f35;
     font-weight: bold;
-    color: #8a0000;
-    border: 1px solid #8a0000;
-    background-color: #e58f8f;
-    opacity: 0;
-  }
-  .success{
-    width: 23%;
+    border: solid 2px #fbcad3;
+    background: #fbcad3;
+    margin: 0 auto;
+    border-radius: 5px;
     text-align: center;
-    margin: 0;
-    padding: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #347b18;
-    border: 1px solid #306e51;
-    background-color: #b8f4c2;
-    opacity: 0;
-  }
+    width: 90%;
+}
   
+  .success {
+    color:#228b22;
+    font-weight:bold;
+    border: solid 2px #bce3bc;
+    background: #bce3bc;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+    width: 90%;
+  }  
   #error-msg-second-line {
     display: block;
   }
