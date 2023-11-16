@@ -28,13 +28,19 @@ export default function Query(db) {
         .reduce((weekDay1, weekDay2) => `${weekDay1},  ${weekDay2}`)
         return db.many(`SELECT id FROM week_day WHERE week_day IN (${days}) `);
     }
+    async function deleteAllWaiters(){
+        
+        await db.none('DELETE FROM waiter where 1=1');
+ 
+    }
 
     return {
         addWaiter,
         saveDays,
         selectDaysAndUser,
         getWaitersId,
-        getWeekDayId
+        getWeekDayId,
+        deleteAllWaiters
 
     }
 }

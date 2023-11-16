@@ -74,8 +74,19 @@ export default function WaiterAvailabilityAppRoutes(waiterObject) {
 
         // console.log(daysResult)
     }
+    //reset
+     async function reset(req, res) {
+       let waiters = waiterObject.reset();
+       let allwaitersClear = waiterObject.deleteAllWaiters();
+        res.render('waitersAvail',{
+            waiters,
+            allwaitersClear
+
+        })
+    };
 
     return {
+        reset,
         saveUser,
         pageLoad,
         add,

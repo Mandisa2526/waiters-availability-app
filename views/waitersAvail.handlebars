@@ -146,7 +146,12 @@
                 {{/each}}
 
             </table>
-            <button type="submit">reset</button>
+            <form action="/reset" method="post">
+
+                    <a class="btn-default btn btn-primary magenta text-centere" href="/reset" name="button"
+                        onclick="resetBtn()">Reset</a>
+
+            </form>
         </div>
     </div>
     <script>

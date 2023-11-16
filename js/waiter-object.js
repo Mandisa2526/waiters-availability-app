@@ -1,7 +1,7 @@
 
 export default function WaitersAvailabilityFactor(query) {
-    let userInput = "";
     let errorMessage = "";
+    let successMessage ='';
     
 
     function adminLogIn(uname,psw){
@@ -15,6 +15,9 @@ export default function WaitersAvailabilityFactor(query) {
  
     async function saveDays(name, days) {
         query.saveDays(name, days)
+    }
+    async function deleteAllWaiters(){
+        query.deleteAllWaiters;
     }
     async function getDaysAndUser() {
         let days = await query.selectDaysAndUser();
@@ -36,14 +39,20 @@ export default function WaitersAvailabilityFactor(query) {
     function getError() {
         return errorMessage;
     }
+    function reset(){
+        successMessage = 'Successfully Cleared';
+        errorMessage;
+    }
 
-    return {    
+    return {  
+        reset,  
         getError,
         addUser,
         getUser,
         saveDays,
         adminLogIn,
         getDaysAndUser,
+        deleteAllWaiters
 
     }
 }

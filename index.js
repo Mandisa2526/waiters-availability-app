@@ -63,6 +63,8 @@ app.get('/days',waiterApp.getDays);
 
 app.post('/days',waiterApp.showD);
 
+app.get('/reset', waiterApp.reset); // Reset button clicked
+
 app.get('/', waiterApp.pageLoad);
 app.post('/', waiterApp.add);
 // Set PORT variable
