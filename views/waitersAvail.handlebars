@@ -28,6 +28,19 @@
 
         }
 
+        /*table background color*/
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
         table {
             margin: 0 auto;
         }
@@ -108,49 +121,51 @@
 
         <div class="content" style="padding: 1em;margin:1em; background-color:#f8f8f8">
             {{#if messages.success}}
-            <div class="message success text-centere">{{messages.success}}</div>
+            <div class="message success text-centere">{{messages.success}}</div><br>
             {{/if}}
-            <p style="float: right;">
-            <div class="div1"></div>
-            <label for="html">Enough Waiters</label><br>
+            <div style="right:20px;">
+                <div class="div1"></div>
+                <label for="html">Enough Waiters</label><br>
 
-            <div class="div2"></div>
-            <label>Over Subscribed waiters</label><br>
+                <div class="div2"></div>
+                <label>Over Subscribed waiters</label><br>
 
-            <div class="div3"></div>
-            <label>waiters still needed</label>
-            </p>
+                <div class="div3"></div>
+                <label>waiters still needed</label>
+            </div><br>
 
             <table class="table text-centere">
                 <tr id="customers">
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
+                    <th class="monday">Monday</th>
+                    <th class="tuesday">Tuesday</th>
+                    <th class="wednesday">Wednesday</th>
+                    <th class="thursday">Thursday</th>
+                    <th class="friday">Friday</th>
+                    <th class="satuday">Saturday</th>
+                    <th class="sunday">Sunday</th>
                 </tr>
 
                 {{#each days}}
                 <tr>
-                    <td>{{#if Monday}}{{@key}}{{/if}}</td>
-                    <td>{{#if Tuesday}}{{@key}}{{/if}}</td>
-                    <td>{{#if Wednesday}}{{@key}}{{/if}}</td>
-                    <td>{{#if Thursday}}{{@key}}{{/if}}</td>
-                    <td>{{#if Friday}}{{@key}}{{/if}}</td>
-                    <td>{{#if Saturday}}{{@key}}{{/if}}</td>
-                    <td>{{#if Sunday}}{{@key}}{{/if}}</td>
+                    <td class="monday">{{#if Monday}}{{@key}}{{/if}}</td>
+                    <td class="tuesday">{{#if Tuesday}}{{@key}}{{/if}}</td>
+                    <td class="wednesday">{{#if Wednesday}}{{@key}}{{/if}}</td>
+                    <td class="thursday">{{#if Thursday}}{{@key}}{{/if}}</td>
+                    <td class="friday">{{#if Friday}}{{@key}}{{/if}}</td>
+                    <td class="satuday">{{#if Saturday}}{{@key}}{{/if}}</td>
+                    <td class="sunday">{{#if Sunday}}{{@key}}{{/if}}</td>
                 </tr>
 
                 {{/each}}
 
             </table>
-            <form action="/reset" method="post">
-                <a class="btn-default btn btn-primary magenta" href="/reset" name="button"
-                    onclick="resetBtn()">Reset</a>
+            <div class="text-center">
 
-            </form>
+                <a class="btn-default btn btn-primary magenta text-center" style="margin:1em;" href="/reset"
+                    name="button" onclick="resetBtn()">Reset</a>
+                <button class="btn btn-dark text-center" style="margin:1em;"><a href="/">home</a></button>
+            </div>
+
         </div>
     </div>
     <script>
@@ -163,7 +178,20 @@
 
         }, 3000);
 
+        ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'satuday', 'sunday'].forEach(cssClass => {
+            let count = document.querySelectorAll(`td.${cssClass}:not(:empty)`).length;
+            console.log(cssClass, count);
+            if(count > 3) {
+                document.querySelector(`th.${cssClass}`).style.setProperty('background-color', 'red');
+            } else if(count == 3) {
+                document.querySelector(`th.${cssClass}`).style.setProperty('background-color', 'green');
+            } else if(count < 3) {
+                document.querySelector(`th.${cssClass}`).style.setProperty('background-color', 'orange');
+            }
+
+        })
     </script>
 </body>
+<script src="/js/DOM.js"></script>
 
 </html>

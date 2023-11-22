@@ -9,21 +9,6 @@ export default function WaiterAvailabilityAppRoutes(waiterObject) {
     async function getDays(req, res) {
         //Show your sister which days waiters are available
         let day = await waiterObject.selectDaysAndUser();
-
-        for(const weekDay in day){
-            
-            const {count} = day[weekDay];
-
-            if(count < 3){
-                day[weekDay].status = "orange";
-            } else if (count === 3){
-                day[weekDay].status = "green";          
-            } else if (count > 3){
-                day[weekDay].status = "red";
-            }   
-        }
-
-        console.log(day);
         res.render('waitersAvail', {
             // variables to be passed to handlebars
             days: day,
@@ -73,7 +58,7 @@ export default function WaiterAvailabilityAppRoutes(waiterObject) {
 
             if (days.length < 3) {           
                 req.flash('error', 'Please select 3 days atleast');
-            } else {
+            } else { 
                 await  waiterObject.saveDays(waiterUsername, days);
                 req.flash('success', 'Work Schedule updated successfully!')
             }

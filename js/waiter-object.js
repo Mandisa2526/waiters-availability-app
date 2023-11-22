@@ -2,12 +2,12 @@
 export default function WaitersAvailabilityFactor(query) {
     let errorMessage = "";
     let successMessage ='';
-    
 
     function adminLogIn(uname,psw){
         return (uname === "uname_admin" && psw === "pswd28") 
     }   
-    async function addUser(name) {
+    async function addUser(name){
+
         if (!errorMessage) {
             errorMessage = await query.addWaiter(name);
         }

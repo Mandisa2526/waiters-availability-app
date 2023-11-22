@@ -1,8 +1,9 @@
-//import WaitersAvailabilityFactor from "waiter-object.js";
+///import WaitersAvailabilityFactor from "waiter-object.js";
 export default function Query(db) {
      
     async function addWaiter(name) {
         console.log("insert user", name)
+        
         await db.none(`insert into waiter(username) values('${name}');`);
     }
     //Join tables
@@ -12,6 +13,7 @@ export default function Query(db) {
 
     async function saveDays(name, days) {
         console.log("saveDays", name, days)
+        
         let user = await getWaitersId(name);
         let weekDaysId = await getWeekDayId(days)
         let inserts = weekDaysId.map(day => `INSERT INTO waiter_week_day(waiter_id, week_day_id) VALUES (${user.id}, ${day.id});`).reduce((insert1, insert2) => insert1 + insert2);
@@ -19,6 +21,7 @@ export default function Query(db) {
     }
 
     function getWaitersId(username) {
+      
         return db.oneOrNone(`SELECT id FROM waiter WHERE username = '${username}'`);
     }
 
@@ -35,6 +38,7 @@ export default function Query(db) {
     }
 
     return {
+
         addWaiter,
         saveDays,
         selectDaysAndUser,

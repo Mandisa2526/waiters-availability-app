@@ -65,6 +65,7 @@ h1{
     background-color:#fff;
     padding: 1em;
     margin: 1em;
+    text-align: center;
     
 }
 /*paragraphs styling*/
@@ -80,8 +81,10 @@ h1{
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 .content{
-    flex: 1 100%;
-    display: flex;
+   width: max-content;
+   position:absolute; 
+   right:500px; 
+   bottom: 50px;
 }   
 .item {
     flex-grow: 1;
@@ -139,19 +142,6 @@ input[type=text], input[type=password] {
   }
   
   /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
   
   /* Modal Content/Box */
   .modal-content {
@@ -202,6 +192,12 @@ input[type=text], input[type=password] {
     .cancelbtn {
        width: 100%;
     }
+    body {
+      margin: 0;
+      font-family: arial;
+      background-image: url("https://cdn.sortiraparis.com/images/80/100789/834071-too-restaurant-too-hotel-paris-photos-menu-entrees.jpg");
+      background-size: cover;
+  }
   }
 
  
@@ -229,16 +225,5 @@ input[type=text], input[type=password] {
   }  
   #error-msg-second-line {
     display: block;
-  }
-
-  /*table background color*/
-  .green{
-    background-color: green;
-  }
-  .red{
-    background-color: red;
-  }
-  .orange{
-    background-color: orange;
   }
   
