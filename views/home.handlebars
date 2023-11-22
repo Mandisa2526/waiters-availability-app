@@ -45,9 +45,10 @@
 
                     <div class=" admnwaiters">
                         <h2 class="text-center">Admin Login</h2>
-                        <div class="msg-holder">
-                            <p class="erroMsg error">{{messages.error}}</p>
-                        </div>
+                        {{#if messages.error}}
+                            <div class="message erroMsg ">{{messages.error}}</div>
+                        {{/if}}
+                        
                         <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;"
                             class="btn-default btn btn-primary">Login</button>
                     </div>
@@ -87,13 +88,13 @@
                 </script>
                 <script>
 
-                    let error = document.querySelector(".error");
+                     setTimeout(() => {
+                    const flashMessages = document.querySelectorAll(".message");
 
-                    setTimeout(function () {
-
-                        error.innerHTML = "";
-
-                    }, 3000);
+                    flashMessages.forEach((message) => {
+                        message.remove();
+                    });
+                }, 3000);
 
                 </script>
 

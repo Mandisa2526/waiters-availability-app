@@ -170,28 +170,34 @@
     </div>
     <script>
         // Automatically remove flash messages after 3 seconds
-        const flashMessages = document.querySelectorAll(".message");
+        setTimeout(() => {
+            const flashMessages = document.querySelectorAll(".message");
 
-        setTimeout(function () {
-
-            flashMessages.innerHTML = "";
-
+            flashMessages.forEach((message) => {
+                message.remove();
+            });
         }, 3000);
+
+        //background color change
 
         ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'satuday', 'sunday'].forEach(cssClass => {
             let count = document.querySelectorAll(`td.${cssClass}:not(:empty)`).length;
             console.log(cssClass, count);
-            if(count > 3) {
+            if (count > 3) {
                 document.querySelector(`th.${cssClass}`).style.setProperty('background-color', 'red');
-            } else if(count == 3) {
+            } else if (count == 3) {
                 document.querySelector(`th.${cssClass}`).style.setProperty('background-color', 'green');
-            } else if(count < 3) {
+            } else if (count < 3) {
                 document.querySelector(`th.${cssClass}`).style.setProperty('background-color', 'orange');
             }
 
         })
+
+        //update waiters
+    
+        
+    
     </script>
 </body>
-<script src="/js/DOM.js"></script>
 
 </html>

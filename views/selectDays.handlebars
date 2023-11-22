@@ -81,9 +81,9 @@
                             <input type="checkbox" name="days" value="Saturday">
                             <label for="day6">Saturday</label><br>
                             <input type="checkbox" name="days" value="Sunday">
-                            <label for="day7">Sunday</label><br><br> 
+                            <label for="day7">Sunday</label><br><br>
                         </div><br><br>
-                        <div class="text-center" >
+                        <div class="text-center">
                             <input type="submit" value="Submit" class="btn-default btn btn-primary">
                             <button class="btn btn-dark"><a href="/">home</a></button>
                         </div>
@@ -92,15 +92,13 @@
             </form>
             <script>
 
-                function() {
-                    var flashDurationInSeconds = 5;
-                    var flashContainer = document.querySelector('.message') ;
+                setTimeout(() => {
+                    const flashMessages = document.querySelectorAll(".message");
 
-                    function removeFlashMessages() {
-                        (flashContainer).remove();
-                    }
-                    setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
-                }
+                    flashMessages.forEach((message) => {
+                        message.remove();
+                    });
+                }, 3000);
 
             </script>
             <div class="footer">
